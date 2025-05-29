@@ -74,18 +74,6 @@ Generate a **Voronoi diagram** to highlight spatial service gaps and coverage ar
 
 ---
 
-## 📂 Project Structure
-
-EV-Infrastructure-AI/
-├── EV.csv # EV stock dataset
-├── app.py # Streamlit dashboard (future)
-├── ev_charging_map.html # EV stock visualization
-├── ev_stock_with_chargers.html # EV + charger visualization
-├── df_cluster.csv # Clustered dataset
-└── README.md # Project overview
-
----
-
 ## 🚀 Running the Project
 
  Clone this repository:
