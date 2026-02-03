@@ -5,6 +5,15 @@
 As electric vehicle (EV) adoption accelerates globally, many regions face a shortage of charging infrastructure. This AI-powered project uses real-world EV data, charger locations, and clustering algorithms to identify underserved regions and suggest optimal sites for new public EV charging stations.
 
 The project includes a **Jupyter Notebook** for data processing/analysis and a **Streamlit Dashboard** for interactive visualization.
+---
+
+## 📸 Project Screenshots
+
+| Feature | Preview |
+|:--------|:--------|
+| **Interactive Dashboard**<br>Main interface showing global charger density clusters (Red/Orange/Green). | ![Dashboard Map](/screenshots/image.png) |
+| **Voronoi Diagram**<br>Spatial analysis highlighting service gaps and charger coverage areas. | ![Voronoi Analysis](/screenshots/voronoi.png) |
+| **Cluster Statistics**<br>Data table highlighting high-priority regions with low infrastructure. | ![Data Table](/screenshots/cluster.png) |
 
 ---
 
