@@ -1,8 +1,10 @@
-# ⚡ AI-Driven EV Charging Infrastructure Planner
+# ⚡ EV Charging Infrastructure Planner
 
 ## 🌍 Overview
 
 As electric vehicle (EV) adoption accelerates globally, many regions face a shortage of charging infrastructure. This AI-powered project uses real-world EV data, charger locations, and clustering algorithms to identify underserved regions and suggest optimal sites for new public EV charging stations.
+
+The project includes a **Jupyter Notebook** for data processing/analysis and a **Streamlit Dashboard** for interactive visualization.
 
 ---
 
@@ -18,11 +20,11 @@ While EV stock is growing exponentially, public charging infrastructure isn’t 
 
 ## 🎯 Objectives
 
-- Analyze EV stock and charger data by region
-- Identify underserved areas using clustering
-- Visualize spatial disparities using Voronoi diagrams
-- Recommend optimal new charger locations
-- Lay the foundation for a dashboard-based planning tool
+- Analyze EV stock and charger data by region using ISO country codes.
+- Identify underserved areas using **K-Means clustering**.
+- Visualize spatial disparities using **Voronoi diagrams**.
+- Recommend optimal new charger locations based on calculated density.
+- Provide an interactive **Streamlit Dashboard** for stakeholders.
 
 ---
 
@@ -30,77 +32,79 @@ While EV stock is growing exponentially, public charging infrastructure isn’t 
 
 | Category        | Tools/Libraries |
 |----------------|-----------------|
-| Language        | Python |
-| Data Analysis   | Pandas, NumPy |
-| Geocoding       | Geopy |
-| Visualization   | Folium, Matplotlib, Seaborn |
-| Clustering      | Scikit-learn (KMeans) |
-| Spatial Mapping | SciPy (Voronoi) |
-| API             | OpenChargeMap |
-| Dashboard (Future) | Streamlit |
+| **Language** | Python 3.x |
+| **Data Analysis** | Pandas, NumPy |
+| **Geospatial** | Geopy, Folium |
+| **Visualization** | Matplotlib, Seaborn |
+| **Clustering** | Scikit-learn (KMeans) |
+| **API Integration** | OpenChargeMap API (Requests) |
+| **Dashboard** | Streamlit |
 
 ---
 
 ## 🧠 Methodology
 
-### Step 1: Load and Filter EV Stock Data
-Use the provided dataset (`EV.csv`) and filter for the most recent EV stock data per region.
+### Step 1: Data Ingestion & Geocoding
+Load `EV.csv` to analyze historical EV stock. Use `Geopy` to map country names to Latitude/Longitude coordinates and standardize country names to ISO codes.
 
-### Step 2: Geocode Regions
-Use `Geopy` to get latitude/longitude for each region in the dataset.
+### Step 2: API Data Fetching
+Query the **OpenChargeMap API** using dynamic ISO codes to fetch real-time public charging station data for mapped regions.
 
-### Step 3: Visualize EV Stock
-Map EV concentration across the globe using `Folium`.
+### Step 3: Feature Engineering
+Calculate **Charger Density** (Chargers per EV stock) and prepare the dataset for machine learning.
 
-### Step 4: Fetch Charging Station Data
-Use the OpenChargeMap API to fetch real-time public charger locations in selected countries.
+### Step 4: Clustering Model
+Apply **K-Means Clustering** to classify regions into three priority categories:
+- 🔴 **High Priority:** High EV stock, low charger density.
+- 🟠 **Medium Priority:** Moderate balance.
+- 🟢 **Low Priority:** Adequate infrastructure.
 
-### Step 5: Overlay Charger Data
-Overlay charger markers on the global EV stock map to identify distribution patterns.
-
-### Step 6: Clustering
-Use **KMeans clustering** to classify regions based on EV stock and charger density.
-
-### Step 7: Voronoi Diagram
-Generate a **Voronoi diagram** to highlight spatial service gaps and coverage areas of existing chargers.
+### Step 5: Interactive Dashboard
+Visualize the clustered data on an interactive map using **Streamlit**, allowing users to explore infrastructure gaps geographically.
 
 ---
 
-## 📊 Key Results
+## 📂 Project Structure
 
-- Clusters reveal countries with high EV stock but insufficient charger infrastructure.
-- Voronoi plots show geographic gaps in public charger availability.
-- Combined insights help prioritize where new chargers will have the most impact.
-
----
+```text
+ev_sales/
+│
+├── ev_sales.ipynb      # Main analysis notebook (Data Fetching + Clustering)
+├── app.py              # Streamlit Dashboard application
+├── EV.csv              # Raw EV stock dataset
+```
 
 ## 🚀 Running the Project
+Prerequisites:
+Ensure you have Python installed. Install the required libraries:
+```pip install pandas numpy matplotlib seaborn scikit-learn folium streamlit geopy requests```
 
- Clone this repository:
-   ```bash
-   git clone https://github.com/your_username/ev_sales.git
-   cd ev_sales
-   ```
----
+1. Run the Analysis (Data Generation)
+First, run the Jupyter Notebook to fetch the latest API data, perform clustering, and generate the df_cluster.csv file.
 
-## 🔮 Future Enhancements
-✅ Streamlit Dashboard for live filtering and visualization
+Open ev_sales.ipynb.
 
-📈 Incorporate more datasets (traffic, urban population, power grid)
+Add your OpenChargeMap API Key in the API function.
 
-🧠 Predictive modeling for EV growth using time series forecasting
+Run all cells to save df_cluster.csv.
 
-📍 Reinforcement Learning for charger placement optimization
+2. Launch the Dashboard
+Once the CSV is generated, launch the interactive dashboard:
 
-🌐 Country-level filtering, multi-criteria decision making
+```streamlit run app.py```
 
----
+## 📊 Key Results
+Cluster 0 (Red): Identifies markets like the USA or Germany where EV adoption outpaces infrastructure growth.
 
-🙌 Contribution
+Cluster 1 (Orange): Emerging markets with growing demand.
+
+Cluster 2 (Green): Regions with sufficient coverage relative to current EV stock.
+
+##🙌 Contribution
 Feel free to fork, star, or open issues. PRs for adding new datasets or better clustering models are welcome!
 
----
-
-👤 Author
-Yash
-Data Science | Machine Learning | Geospatial AI
+##👤 Author
+Yash Shaw Data Science | Machine Learning | Geospatial AI
+├── df_cluster.csv      # Processed data with cluster labels (Generated by notebook)
+├── README.md           # Project documentation
+└── requirements.txt    # Python dependencies
