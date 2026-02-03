@@ -93,28 +93,28 @@ Ensure you have Python installed. Install the required libraries:
 ```pip install pandas numpy matplotlib seaborn scikit-learn folium streamlit geopy requests```
 
 1. Run the Analysis (Data Generation)
-First, run the Jupyter Notebook to fetch the latest API data, perform clustering, and generate the df_cluster.csv file.
+  First, run the Jupyter Notebook to fetch the latest API data, perform clustering, and generate the df_cluster.csv file.
 
-Open ev_sales.ipynb.
+  Open ev_sales.ipynb.
 
-Add your OpenChargeMap API Key in the API function.
+  Add your OpenChargeMap API Key in the API function.
 
-Run all cells to save df_cluster.csv.
+  Run all cells to save df_cluster.csv.
 
 2. Launch the Dashboard
-Once the CSV is generated, launch the interactive dashboard:
+  Once the CSV is generated, launch the interactive dashboard:
 
 ```streamlit run app.py```
 
 ## 📊 Key Results
-Cluster 0 (Red): Identifies markets like the USA or Germany where EV adoption outpaces infrastructure growth.
+  Cluster 0 (Red): Identifies markets like the USA or Germany where EV adoption outpaces infrastructure growth.
 
-Cluster 1 (Orange): Emerging markets with growing demand.
+  Cluster 1 (Orange): Emerging markets with growing demand.
 
-Cluster 2 (Green): Regions with sufficient coverage relative to current EV stock.
+  Cluster 2 (Green): Regions with sufficient coverage relative to current EV stock.
 
-##🙌 Contribution
+## 🙌 Contribution
 Feel free to fork, star, or open issues. PRs for adding new datasets or better clustering models are welcome!
 
-##👤 Author
+## 👤 Author
 Yash Shaw Data Science | Machine Learning | Geospatial AI
