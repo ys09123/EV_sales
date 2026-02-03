@@ -78,6 +78,7 @@ Visualize the clustered data on an interactive map using **Streamlit**, allowing
 ```text
 ev_sales/
 │
+├── screenshots/        # Visuals prepared during EDA
 ├── ev_sales.ipynb      # Main analysis notebook (Data Fetching + Clustering)
 ├── app.py              # Streamlit Dashboard application
 ├── EV.csv              # Raw EV stock dataset
