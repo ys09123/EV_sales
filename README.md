@@ -78,8 +78,8 @@ Generate a **Voronoi diagram** to highlight spatial service gaps and coverage ar
 
  Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/ev-infrastructure-ai.git
-   cd ev-infrastructure-a
+   git clone https://github.com/your_username/ev_sales.git
+   cd ev_sales
    ```
 ---
 
